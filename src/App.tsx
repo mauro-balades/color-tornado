@@ -1,5 +1,5 @@
 import React, { Children, ReactElement, useEffect, useState } from "react";
-import { ColorWrapper, RippleEffect } from "./styles";
+import { ColorWrapper, RippleEffect, ColourTitle } from "./styles";
 import * as _ from "lodash";
 
 const COLORS = [
@@ -38,7 +38,7 @@ function App() {
         console.log(COLORS.indexOf(color));
         setColor(
             COLORS[
-                COLORS.indexOf(color) - 1 == COLORS.length
+                COLORS.indexOf(color) == (COLORS.length - 1)
                     ? 0
                     : COLORS.indexOf(color) + 1
             ]
@@ -70,31 +70,34 @@ function App() {
     }, []);
 
     return (
-        <ColorWrapper
-            id="ripple-cursor-wrapper"
-            onClick={onClick}
-            color={color}
-        >
-            {ripples.map((ripple: any) => (
-                <RippleEffect
-                    style={{
-                        top: `${ripple.y}px`,
-                        left: `${ripple.x}px`,
-                    }}
-                    className="click-ripple"
-                ></RippleEffect>
-            ))}
-            {colors.map((color: any) => (
-                <RippleEffect
-                    style={{
-                        top: `${color.y}px`,
-                        left: `${color.x}px`,
-                        background: color.color,
-                    }}
-                    className="color-ripple"
-                ></RippleEffect>
-            ))}
-        </ColorWrapper>
+        <>
+            <ColourTitle>{color}</ColourTitle>
+            <ColorWrapper
+                id="ripple-cursor-wrapper"
+                onClick={onClick}
+                color={color}
+            >
+                {ripples.map((ripple: any) => (
+                    <RippleEffect
+                        style={{
+                            top: `${ripple.y}px`,
+                            left: `${ripple.x}px`,
+                        }}
+                        className="click-ripple"
+                    ></RippleEffect>
+                ))}
+                {colors.map((color: any) => (
+                    <RippleEffect
+                        style={{
+                            top: `${color.y}px`,
+                            left: `${color.x}px`,
+                            background: color.color,
+                        }}
+                        className="color-ripple"
+                    ></RippleEffect>
+                ))}
+            </ColorWrapper>
+        </>
     );
 }
 

@@ -20,6 +20,8 @@ export const ColorWrapper = styled.main`
 
     position: relative;
     overflow: hidden;
+
+    cursor: pointer;
 `;
 
 export const RippleEffect = styled.div`
@@ -42,3 +44,23 @@ export const RippleEffect = styled.div`
         z-index: 9999;
     }
 `;
+
+export const ColourTitle = styled.div`
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    color: #fff;
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+
+    font-size: 40px;
+    font-weight: bold;
+
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+
+
+`
