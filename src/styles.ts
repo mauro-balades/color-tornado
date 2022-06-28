@@ -1,17 +1,16 @@
-
 import styled, { keyframes } from "styled-components";
 
 const rippleAnimation = keyframes`
     0%   { transform: translate(-100%, -100%); }
     80%  { transform: translate(-100%, -100%) scale(7); }
     100% { transform: translate(-100%, -100%) scale(7); opacity: 0; }
-`
+`;
 
 const colorRippleAnimation = keyframes`
     0%   { transform: translate(-100%, -100%); }
     80%  { transform: translate(-100%, -100%) scale(100); }
     100% { transform: translate(-100%, -100%) scale(100); }
-`
+`;
 
 export const ColorWrapper = styled.main`
     background: ${(props: any) => props.color};
@@ -21,26 +20,25 @@ export const ColorWrapper = styled.main`
 
     position: relative;
     overflow: hidden;
-`
+`;
 
 export const RippleEffect = styled.div`
     width: 50px;
     height: 50px;
 
-    background: rgba(255,255,255,.4);
+    background: rgba(255, 255, 255, 0.4);
     position: absolute;
     border-radius: 50%;
 
     transform: translate(-50%, -50%);
 
     &.color-ripple {
-        animation: 3s cubic-bezier(0, 0, 0.2, 1) ${colorRippleAnimation} forwards;
+        animation: 3s cubic-bezier(0, 0, 0.2, 1) ${colorRippleAnimation}
+            forwards;
     }
 
     &.click-ripple {
-        animation: .2s ease-in ${rippleAnimation} forwards;
+        animation: 0.2s ease-in ${rippleAnimation} forwards;
         z-index: 9999;
     }
-`
-
-
+`;
