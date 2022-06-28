@@ -1,6 +1,6 @@
 {
-    "short_name": "React App",
-    "name": "Create React App Sample",
+    "short_name": "Color Tornado",
+    "name": "Choose randomly generated colors with a user-friendly and interactive interface.",
     "icons": [
         {
             "src": "favicon.ico",
