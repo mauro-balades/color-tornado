@@ -15,7 +15,7 @@ const COLORS = [
 ];
 
 function App() {
-    const [color, setColor] = useState(COLORS[-1]);
+    const [color, setColor] = useState(COLORS[0]);
 
     const [isRandom, setRandom] = useState(false);
 
