@@ -1,5 +1,5 @@
 import React, { Children, ReactElement, useEffect, useState } from "react";
-import { ColorWrapper, RippleEffect, ColourTitle } from "./styles";
+import { ColorWrapper, RippleEffect, ColourTitle, Dialog } from "./styles";
 import { randomBetween } from "./utils";
 import rgbHex from "rgb-hex";
 import * as _ from "lodash";
@@ -9,6 +9,10 @@ function App() {
 
     const [ripples, setRipples] = useState([] as any[]);
     const [colors, setColors] = useState([] as any[]);
+
+    const copyColor = () => {
+        navigator.clipboard.writeText(`#${color}`);
+    }
 
     const setRandomColor = () => {
         let value = rgbHex(
@@ -80,6 +84,12 @@ function App() {
                     </>
                 )}
             </ColourTitle>
+            <Dialog>
+                <a href="https://github.com/mauro-balades/color-tornado" target="_blank">Source Code</a>
+                <a href="">Twitter</a>
+                <span style={{ height: '30px', width: '2px', background: '#000', margin: '0 10px' }}></span>
+                <svg style={{ height: '30px', width: '30px', cursor: 'pointer', paddingLeft: '5px' }} onClick={copyColor} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+            </Dialog>
             <ColorWrapper
                 id="ripple-cursor-wrapper"
                 onClick={onClick}

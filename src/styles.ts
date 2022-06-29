@@ -61,4 +61,37 @@ export const ColourTitle = styled.div`
 
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
+
+    user-select: none;
+    cursor: auto;
 `;
+
+export const Dialog = styled.div`
+    position: absolute;
+
+    bottom: 0%;
+    left: 0%;
+
+    margin: 10px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 10px 15px;
+    font-weight: bold;
+
+    font-family: "Roboto", sans-serif;
+
+    color: #000;
+    background: #fff;
+    border: 2px solid #000;
+
+    border-radius: 5px;
+    z-index: 10;
+
+    & a {
+        color: #000;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+`
