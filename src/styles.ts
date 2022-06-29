@@ -59,6 +59,6 @@ export const ColourTitle = styled.div`
     font-size: 40px;
     font-weight: bold;
 
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     text-transform: uppercase;
-`
+`;
