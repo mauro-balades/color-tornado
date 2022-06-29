@@ -1,48 +1,26 @@
 import React, { Children, ReactElement, useEffect, useState } from "react";
 import { ColorWrapper, RippleEffect, ColourTitle } from "./styles";
+import { randomBetween } from "./utils";
+import rgbHex from 'rgb-hex';
 import * as _ from "lodash";
 
-const COLORS = [
-    "#f36747",
-    "#f197a2",
-    "#4360a8",
-    "#3cc6ed",
-    "#842d73",
-    "#ee316b",
-    "#4152a5",
-    "#ffb137",
-    "#5ce5aa",
-];
+
 
 function App() {
-    const [color, setColor] = useState(COLORS[0]);
-
-    const [isRandom, setRandom] = useState(false);
+    const [color, setColor] = useState("");
 
     const [ripples, setRipples] = useState([] as any[]);
     const [colors, setColors] = useState([] as any[]);
 
     const setRandomColor = () => {
-        if (isRandom) {
-            let c = COLORS[Math.floor(Math.random() * COLORS.length)];
-
-            if (color === c) {
-                setRandomColor();
-                return;
-            }
-
-            setColor(c);
-            return;
-        }
-
-        console.log(COLORS.indexOf(color));
-        setColor(
-            COLORS[
-                COLORS.indexOf(color) == (COLORS.length - 1)
-                    ? 0
-                    : COLORS.indexOf(color) + 1
-            ]
+        let value = rgbHex(
+            randomBetween(0, 255),
+            randomBetween(0, 255),
+            randomBetween(0, 255),
         );
+
+        setColor(value);
+        return value;
     };
 
     const onClick = (event: any) => {
@@ -54,24 +32,24 @@ function App() {
             },
         ]);
 
-        setRandomColor();
+        let color = setRandomColor();
         setColors((currentState) => [
             ...currentState,
             {
                 y: event.clientY,
                 x: event.clientX,
-                color: _.cloneDeep(color),
+                color,
             },
         ]);
     };
 
-    useEffect(() => {
-        setRandomColor();
-    }, []);
+    console.log(colors)
 
     return (
         <>
-            <ColourTitle>{color}</ColourTitle>
+            <ColourTitle>
+                {color === "" ? <>Click anywhere or the spacebar</> : <><span style={{ marginRight: '5px' }}>#</span>{color}</>}
+            </ColourTitle>
             <ColorWrapper
                 id="ripple-cursor-wrapper"
                 onClick={onClick}
@@ -91,7 +69,7 @@ function App() {
                         style={{
                             top: `${color.y}px`,
                             left: `${color.x}px`,
-                            background: color.color,
+                            background: color.color === "" ? "#000" : `#${color.color}`,
                         }}
                         className="color-ripple"
                     ></RippleEffect>
