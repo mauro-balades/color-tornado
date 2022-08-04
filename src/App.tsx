@@ -56,7 +56,7 @@ function App() {
         updateColor(info);
     };
 
-    document.body.onkeyup = function (e) {
+    document.body.onkeydown = function (e) {
         if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
             let color = setRandomColor();
             let info = {
